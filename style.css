@@ -186,7 +186,6 @@ button.button:hover {
     vertical-align: top;
     margin-top: 10px;
 	border-radius: 50%;
-	object-fit: cover;
 }
 
 .header__title {
