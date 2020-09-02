@@ -1,5 +1,9 @@
 User-agent: *
+
+# search anything
 Allow: /
+
+# search only default portofolio cybersecurity
 Allow: /cybersecurity/overview
 Disallow: /cybersecurity/
 
