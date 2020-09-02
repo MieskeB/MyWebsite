@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Allow: /cybersecurity/overview
+Disallow: /cybersecurity/
 
 Sitemap: https://www.michelbijnen.nl/sitemap.xml
