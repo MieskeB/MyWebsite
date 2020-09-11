@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
 	<url>
 		<loc>https://www.michelbijnen.nl/</loc>
 		<lastmod>2020-09-02</lastmod>
@@ -15,5 +14,8 @@
 	</url>
 	<url>
 		<loc>https://www.michelbijnen.nl/cybersecurity/learningplan</loc>
+	</url>
+	<url>
+		<loc>https://www.michelbijnen.nl/cybersecurity/researchapproach</loc>
 	</url>
 </urlset>
