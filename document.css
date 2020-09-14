@@ -9,12 +9,9 @@
 
 .content table td {
     text-align: left;
-    border: 1pt solid #b3b3b3;
+    border-right: 1pt solid #b3b3b3;
+    border-bottom: 1pt solid #b3b3b3;
 }
-
-/*.content table tr > td:first-child {*/
-/*    width: 20%;*/
-/*}*/
 
 .content h1 {
     margin: 12.0pt 0 0;
@@ -23,7 +20,10 @@
     font-family: K2D, Halvetica, Arial, sans-serif;
     color: #b3b3b3;
     font-weight: 300;
+}
 
+.legendarow {
+    font-weight: bolder;
 }
 
 @media screen and (max-width:789px) {
