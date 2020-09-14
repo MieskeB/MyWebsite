@@ -15,37 +15,14 @@
     width: 20%;
 }
 
-.heading {
+.content h1 {
     margin: 12.0pt 0 0;
     line-height: 107%;
-    font-size: 45px;
+    font-size: 3em;
     font-family: K2D, Halvetica, Arial, sans-serif;
     color: #b3b3b3;
     font-weight: 300;
 
-}
-
-.lines {
-    width: 432.05pt;
-    border-top: 1pt solid;
-    border-right: 1pt solid;
-    border-bottom: 1pt solid;
-    border-image: initial;
-    border-left: none;
-    padding: 0 5.4pt;
-    vertical-align: top;
-}
-
-.tdclass {
-    width: 21.05pt;
-    border: 1pt solid;
-    padding: 0 5.4pt;
-    vertical-align: top;
-}
-
-.text {
-    margin: 0 0 8.0pt;
-    line-height: 107%;
 }
 
 @media screen and (max-width:789px) {
