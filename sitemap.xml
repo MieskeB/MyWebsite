@@ -8,8 +8,8 @@
 	</url>
 	<url>
 		<loc>https://www.michelbijnen.nl/cybersecurity/overview</loc>
-		<lastmod>2020-09-16</lastmod>
-		<changefreq>daily</changefreq>
+		<lastmod>2020-10-27</lastmod>
+		<changefreq>weekly</changefreq>
 		<priority>0.7</priority>
 	</url>
 	<url>
@@ -20,5 +20,8 @@
 	</url>
 	<url>
 		<loc>https://www.michelbijnen.nl/cybersecurity/preliminaryinvestigation</loc>
+	</url>
+	<url>
+		<loc>https://www.michelbijnen.nl/cybersecurity/redblue1</loc>
 	</url>
 </urlset>

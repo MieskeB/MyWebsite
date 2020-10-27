@@ -1,0 +1,152 @@
+<html>
+<head>
+    <title>
+        Michel Bijnen - Cyber Security Minor
+    </title>
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
+    <link rel="stylesheet" type="text/css" href="../document.css"/>
+    <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet" type="text/css"/>
+    <script src="https://kit.fontawesome.com/7e39a90b86.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header__inner">
+        <img class="header__logo" src="../assets/img/learningplan.jpg" alt="LearningPlan">
+        <h1 class="header__title">
+            Red/Blue team event 1
+        </h1>
+        <h2>
+            <a href="./overview">
+                <button class="button">
+                    Go back to Cyber Security Minor
+                </button>
+            </a>
+            <a href="../">
+                <button class="button">
+                    More about Michel
+                </button>
+            </a>
+        </h2>
+    </div>
+</header>
+<div class="under_header"></div>
+<p class="subtitle">
+    The first red/blue team event results and evaluation
+</p>
+
+<div class="content">
+    <h1>
+        The application up to this point
+    </h1>
+    <p>
+        I have implemented the application's core functionality. The users can register and log in with 2 factor
+        authentication (via an authenticator app). The authorization is handled via JWT tokens. These tokens are signed
+        with an RSA 2048 key which is randomly generated on startup by the authorization microservice. The user can also
+        register a team while creating his own account.
+    </p>
+    <p>
+        When logged in, the user can see all challenges and submit flags to those challenges. The solved challenges will
+        be shared between all users in the same team. The user can also visit the scoreboard page. There he'll find all
+        teams with their scores.
+    </p>
+    <p>
+        As an administrator, you'll also have access to the admin dashboard. In this dashboard you can see all users and
+        challenges. Here you can also create, update and delete challenges. You can also delete user and promote them to
+        administrator.
+    </p>
+    <p>
+        For the deployment, I've created a Ubuntu 20.04 server. On this server I've install Docker and Docker Swarm to
+        make sure that I can add extra scalability. Then I've built my images via Dockerhub, so I can easily fetch all
+        required images and with the Docker-Compose, the deployment is now solid and good working.
+    </p>
+
+    <h1>
+        Solved problems
+    </h1>
+    <p>
+        The first problem is time. I've spent some nights with working on the application to make sure everything is
+        finished in time. But eventually I was happy with the results.
+    </p>
+    <p>
+        I've had a problem with deployment. The database couldn't handle the amount of requests. Later I found out that
+        there wasn't enough memory on the virtual machine, so I've increased it to the adviced amount.
+    </p>
+
+    <h1>
+        Known issues (but not solved due to lack of time)
+    </h1>
+    <p>
+        You don't need authorization if you send a request directly to one of the microservices.
+    </p>
+    <p>
+        Flags aren't hashed while they are sensitive data and never requested (only validated)
+    </p>
+    <p>
+        CSRF should be possible
+    </p>
+    <p>
+        No SSL certificate
+    </p>
+    <p>
+        No DOS protection
+    </p>
+
+    <h1>
+        Bugs found by Red Team
+    </h1>
+    <p>
+        You don't need authorization if you send a request directly to one of the microservices.
+    </p>
+    <p>
+        Password of the admin account is the same as Portainer password
+    </p>
+    <p>
+        No SSL certificate
+    </p>
+    <p>
+        Hardcoded role (in my opinion this isn't an issue)
+    </p>
+    <p>
+        RSA key for every authorization service different, so unable to scale the authorization service up
+    </p>
+
+    <h1>
+        TODO for next red/blue event
+    </h1>
+    <p>
+        Static RSA key via env variables so scaling is possible
+    </p>
+    <p>
+        After promoting a user, update user list in admin panel so it's instantly visible
+    </p>
+    <p>
+        Password policy over all service
+    </p>
+    <p>
+        kekctf{} all lower case in hint box
+    </p>
+    <p>
+        Make own team bold in scoreboard
+    </p>
+    <p>
+        For equal score, the person who submitted it first should be at the top (make last submit working)
+    </p>
+    <p>
+        Selecting a team from a list while creating an account (or adding a new one)
+    </p>
+    <p>
+        Microservices validate that requests are coming from the gateway
+    </p>
+    <p>
+        file upload/download per challenge
+    </p>
+    <p>
+        SSL certificate
+    </p>
+    <p>
+        Hash flags (or encrypt) so that they cannot be read
+    </p>
+</div>
+
+</body>
+</html>
