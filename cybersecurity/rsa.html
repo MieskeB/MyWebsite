@@ -1,0 +1,169 @@
+<html>
+<head>
+    <title>
+        Michel Bijnen - Cyber Security Minor
+    </title>
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
+    <link rel="stylesheet" type="text/css" href="../document.css"/>
+    <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet" type="text/css"/>
+    <script src="https://kit.fontawesome.com/7e39a90b86.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header__inner">
+        <img class="header__logo" src="../assets/img/learningplan.jpg" alt="LearningPlan">
+        <h1 class="header__title">
+            RSA
+        </h1>
+        <h2>
+            <a href="./overview">
+                <button class="button">
+                    Go back to Cyber Security Minor
+                </button>
+            </a>
+            <a href="../">
+                <button class="button">
+                    More about Michel
+                </button>
+            </a>
+        </h2>
+    </div>
+</header>
+<div class="under_header"></div>
+<p class="subtitle">
+    Calculating RSA by hand
+</p>
+
+<div class="content">
+    <h1>
+        Calculating keys
+    </h1>
+    <p>
+        p and q need to be prime numbers. How larger the number, how more difficult the cipher. So for this example, I
+        am going to use p = 23 and q = 17.
+    </p>
+    <p>
+        First we need to calculate &phi;(n) via the formula &phi;(n) = (p - 1)(q - 1). So in this case &phi;(n) = (23 -
+        1)(17 - 1) = 22 * 16 = 352.
+    </p>
+    <p>
+        e can be a random number that 1 < e < &phi;(n) and GCD(e, &phi;(n)) = 1. For this example we pick 53. 53 is a
+        prime number and thus only divisible by 1 or itself. Since 352 isn't divisible by 53, 1 is the greatest common
+        divider.
+    </p>
+    <p>
+        Now to calculate n, we use the following formula: n = p * q. So for this case n = 23 * 17 = 391
+    </p>
+    <p>
+        p = 23
+        <br/>
+        q = 17
+        <br/>
+        e = 53
+        <br/>
+        &phi;(n) = 352
+        <br/>
+        n = 391
+    </p>
+    <p>
+        d can be calculated via the following formula: ed = 1 mod &phi;(n). Placing e on the right side will convert
+        this formula to d = e<sup>-1</sup> (mod (&phi;(n))). So when we fill in the values, we'll get the formula d = 53<sup>-1</sup>
+        (mod 352).
+    </p>
+    <p>
+        To calculate d, we first need to determine the GCD of 352 and 53:
+        <br/>
+        GCD(352, 53)
+        <br/>
+        GCD(34, 53) &rarr; 34 = 352 - 6 * 53
+        <br/>
+        GCD(34, 19) &rarr; 19 = 53 - 1 * 34
+        <br/>
+        GCD(15, 19) &rarr; 15 = 34 - 1 * 19
+        <br/>
+        GCD(15, 4) &rarr; 4 = 19 - 1 * 15
+        <br/>
+        GCD(3, 4) &rarr; 3 = 15 - 3 * 4
+        <br/>
+        GCD(3, 1) &rarr; 1 = 4 - 1 * 3
+        <br/>
+        GCD(0, 1) = 1 &rarr; so GCD(352, 53) = 1
+    </p>
+    <p>
+        Next we need to write all equations in a reverse order:
+        <br/>
+        1 = 4 - 1 * 3
+        <br/>
+        1 = 4 - 1 * (15 - 3 * 4) = 4 - 1 * 15 + 3 * 4 = 4 * 4 - 1 * 15
+        <br/>
+        1 = 4 * (19 - 1 * 15) - 1 * 15 = 4 * 19 - 4 * 15 - 1 * 15 = 4 * 19 - 5 * 15
+        <br/>
+        1 = 4 * 19 - 5 * (34 - 1 * 19) = 4 * 19 - 5 * 34 + 5 * 19 = 9 * 19 - 5 * 34
+        <br/>
+        1 = 9 * (53 - 1 * 34) - 5 * 34 = 9 * 53 - 9 * 34 - 5 * 34 = 9 * 53 - 14 * 34
+        <br/>
+        1 = 9 * 53 - 14 * (352 - 6 * 53) = 9 * 53 - 14 * 352 + 84 * 53 = 93 * 53 - 14 * 352
+        <br/>
+        This means that 93 * 53 - 14 * 352 (mod 352) = 1
+    </p>
+    <p>
+        Next to get d:
+        <br/>
+        Since 352 (mod 352) = 0, we can say that 14 * 352 (mod 352) = 0. This means that 93 * 53 (mod 352) = 1.
+        <br/>
+        With the definition a * a<sup>-1</sup> = 1. This means that 93 * 53 = 1, but 53<sup>-1</sup> * 53 = 1. This means that 93 the inverse is of 53.
+        <br/>
+        To validate this: 93 * 53 = 1 (mod 352), which is correct. So we now know that d = 93
+    </p>
+    <p>
+        Now we have enough values to calculate the public and private key. The public key is {e, n} and the private key is {d, n}. So filling in the following values:
+        <br/>
+        public key: {53, 391}
+        <br/>
+        private key: {93, 391}
+    </p>
+
+    <h1>
+        Encrypt/decrypt
+    </h1>
+    <p>
+        The formula for encrypting a message is E(M) = M<sup>e</sup> (mod n). In this equation, M = plaintext message and E(M) = encrypted message.
+        <br/>
+        The message we want to encrypt is: "hi". Which is converted to ASCII in the following way: 104105
+        <br/>
+        E(M) = M<sup>e</sup> (mod n) = 104105<sup>53</sup> (mod 391)
+    </p>
+    <p>
+        This formula is almost impossible to calculate by hand. So we are going to use some other algorithms. The first one is that we can also grab the first number and do the modulus of that number. So 104105 (mod 391) = 99.
+        <br/>
+        So 99<sup>53</sup> (mod 391) is some easier to calculate. But still almost impossible.
+        <br/>
+        So next we grab a new rule from Euler which states: a<sup>&phi;(m)</sup> = 1 (mod m) <b>if</b> GCD(a, m) = 1. This case, a = 99 and m = 391. So first we check if we can find the GCD:
+        <br/>
+        GCD(99, 391)
+        <br/>
+        GCD(99, 94)
+        <br/>
+        GCD(5, 94)
+        <br/>
+        GCD(5, 4)
+        <br/>
+        GCD(1, 4)
+        <br/>
+        GCD(1, 0)
+        <br/>
+        This shows that the GCD of the a and the m is 1 and thus we can use the new rule from Euler: &phi;(m) = &phi;(391) = (17 - 1)(23 - 1) = 368.
+        <br/>
+        Next we can make the function easier by converting it to 99<sup>&phi;(391) - 315</sup> = 99<sup>&phi;(391)</sup> * 99<sup>-315</sup> = ???
+        <br/>
+        E(M) = 199
+    </p>
+    <p>
+        The formula for decrypting a message is D(C) = C<sup>d</sup> (mod n). In this equation, D(C) = decrypted cyphertext, C = cyphertext.
+        <br/>
+        So we need to decrypt 199, so C = 199. To fill everything in: 199 ^ 93 (mod 391) = 99 which matches the encrypted 99. ????
+    </p>
+</div>
+
+</body>
+</html>
