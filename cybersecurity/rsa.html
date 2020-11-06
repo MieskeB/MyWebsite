@@ -129,34 +129,40 @@
     <p>
         The formula for encrypting a message is E(M) = M<sup>e</sup> (mod n). In this equation, M = plaintext message and E(M) = encrypted message.
         <br/>
-        The message we want to encrypt is: "hi". Which is converted to ASCII in the following way: 104105
+        The message we want to encrypt is: "A". Which is converted to ASCII in the following way: 65
         <br/>
-        E(M) = M<sup>e</sup> (mod n) = 104105<sup>53</sup> (mod 391)
+        E(M) = M<sup>e</sup> (mod n) = 65<sup>53</sup> (mod 391)
     </p>
     <p>
-        This formula is almost impossible to calculate by hand. So we are going to use some other algorithms. The first one is that we can also grab the first number and do the modulus of that number. So 104105 (mod 391) = 99.
+        This formula is almost impossible to calculate by hand. So we are going to use some other algorithms.
         <br/>
-        So 99<sup>53</sup> (mod 391) is some easier to calculate. But still almost impossible.
+        So next we grab a new rule from Euler which states: a<sup>&phi;(m)</sup> = 1 (mod m) <b>if</b> GCD(a, m) = 1. This case, a = 65 and m = 391. Next we are going to simplify and solve the equation:
         <br/>
-        So next we grab a new rule from Euler which states: a<sup>&phi;(m)</sup> = 1 (mod m) <b>if</b> GCD(a, m) = 1. This case, a = 99 and m = 391. So first we check if we can find the GCD:
+        65<sup>53</sup> = 65<sup>2*5*5+3</sup> = ((65<sup>2</sup>)<sup>5</sup>)<sup>5</sup> * 65<sup>3</sup> = (4225<sup>5</sup>)<sup>5</sup> * 65<sup>3</sup>
         <br/>
-        GCD(99, 391)
+        4225 (mod 391) = 315
         <br/>
-        GCD(99, 94)
+        (315<sup>5</sup>)<sup>5</sup> * 65<sup>3</sup> = (315<sup>2</sup> * 315<sup>3</sup>)<sup>5</sup> * 65<sup>3</sup> = (99225 * 31255875)<sup>5</sup> * 65<sup>3</sup>
         <br/>
-        GCD(5, 94)
+        99225 (mod 391) = 302
         <br/>
-        GCD(5, 4)
+        31255875 (mod 391) = 117
         <br/>
-        GCD(1, 4)
+        302 * 117 (mod 391) = 144
         <br/>
-        GCD(1, 0)
+        144<sup>5</sup> * 65<sup>3</sup> = 61917364224 * 65<sup>3</sup>
         <br/>
-        This shows that the GCD of the a and the m is 1 and thus we can use the new rule from Euler: &phi;(m) = &phi;(391) = (17 - 1)(23 - 1) = 368.
+        61917364224 (mod 391) = 94
         <br/>
-        Next we can make the function easier by converting it to 99<sup>&phi;(391) - 315</sup> = 99<sup>&phi;(391)</sup> * 99<sup>-315</sup> = ???
+        94 * 65<sup>3</sup> = 94 * 274625
         <br/>
-        E(M) = 199
+        274625 (mod 391) = 143
+        <br/>
+        94 * 143 = 13442
+        <br/>
+        13442 (mod 391) = 148
+        <br/>
+        E(M) = 148
     </p>
     <p>
         The formula for decrypting a message is D(C) = C<sup>d</sup> (mod n). In this equation, D(C) = decrypted cyphertext, C = cyphertext.
