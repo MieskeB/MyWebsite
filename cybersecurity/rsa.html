@@ -111,12 +111,14 @@
         <br/>
         Since 352 (mod 352) = 0, we can say that 14 * 352 (mod 352) = 0. This means that 93 * 53 (mod 352) = 1.
         <br/>
-        With the definition a * a<sup>-1</sup> = 1. This means that 93 * 53 = 1, but 53<sup>-1</sup> * 53 = 1. This means that 93 the inverse is of 53.
+        With the definition a * a<sup>-1</sup> = 1. This means that 93 * 53 = 1, but 53<sup>-1</sup> * 53 = 1. This
+        means that 93 the inverse is of 53.
         <br/>
         To validate this: 93 * 53 = 1 (mod 352), which is correct. So we now know that d = 93
     </p>
     <p>
-        Now we have enough values to calculate the public and private key. The public key is {e, n} and the private key is {d, n}. So filling in the following values:
+        Now we have enough values to calculate the public and private key. The public key is {e, n} and the private key
+        is {d, n}. So filling in the following values:
         <br/>
         public key: {53, 391}
         <br/>
@@ -127,22 +129,26 @@
         Encrypt/decrypt
     </h1>
     <p>
-        The formula for encrypting a message is E(M) = M<sup>e</sup> (mod n). In this equation, M = plaintext message and E(M) = encrypted message.
+        The formula for encrypting a message is E(M) = M<sup>e</sup> (mod n). In this equation, M = plaintext message
+        and E(M) = encrypted message.
         <br/>
         The message we want to encrypt is: "A". Which is converted to ASCII in the following way: 65
         <br/>
         E(M) = M<sup>e</sup> (mod n) = 65<sup>53</sup> (mod 391)
     </p>
     <p>
-        This formula is almost impossible to calculate by hand. So we are going to use some other algorithms.
+        This formula is almost impossible to calculate by hand. So we are going to use some other algorithms and power
+        simplifications.
         <br/>
-        So next we grab a new rule from Euler which states: a<sup>&phi;(m)</sup> = 1 (mod m) <b>if</b> GCD(a, m) = 1. This case, a = 65 and m = 391. Next we are going to simplify and solve the equation:
+        So we are going to simplify and solve the equation:
         <br/>
-        65<sup>53</sup> = 65<sup>2*5*5+3</sup> = ((65<sup>2</sup>)<sup>5</sup>)<sup>5</sup> * 65<sup>3</sup> = (4225<sup>5</sup>)<sup>5</sup> * 65<sup>3</sup>
+        65<sup>53</sup> = 65<sup>2*5*5+3</sup> = ((65<sup>2</sup>)<sup>5</sup>)<sup>5</sup> * 65<sup>3</sup> =
+        (4225<sup>5</sup>)<sup>5</sup> * 65<sup>3</sup>
         <br/>
         4225 (mod 391) = 315
         <br/>
-        (315<sup>5</sup>)<sup>5</sup> * 65<sup>3</sup> = (315<sup>2</sup> * 315<sup>3</sup>)<sup>5</sup> * 65<sup>3</sup> = (99225 * 31255875)<sup>5</sup> * 65<sup>3</sup>
+        (315<sup>5</sup>)<sup>5</sup> * 65<sup>3</sup> = (315<sup>2</sup> * 315<sup>3</sup>)<sup>5</sup> *
+        65<sup>3</sup> = (99225 * 31255875)<sup>5</sup> * 65<sup>3</sup>
         <br/>
         99225 (mod 391) = 302
         <br/>
@@ -165,9 +171,14 @@
         E(M) = 148
     </p>
     <p>
-        The formula for decrypting a message is D(C) = C<sup>d</sup> (mod n). In this equation, D(C) = decrypted cyphertext, C = cyphertext.
+        The formula for decrypting a message is D(C) = C<sup>d</sup> (mod n). In this equation, D(C) = decrypted
+        cyphertext, C = cyphertext.
         <br/>
-        So we need to decrypt 199, so C = 199. To fill everything in: 199 ^ 93 (mod 391) = 99 which matches the encrypted 99. ????
+        So we need to decrypt 148, so C = 148. To fill everything in: 148 ^ 93 (mod 391). Doing this by hand will take a lot of time and will just be a copy of above, so I am just going to use my calculator for this one.
+        <br/>
+        D(C) = 148 ^ 93 (mod 391) = 65
+        <br/>
+        65 back to a letter is the letter 'A'.
     </p>
 </div>
 
