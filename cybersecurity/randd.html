@@ -1,0 +1,144 @@
+<html>
+<head>
+    <title>
+        Michel Bijnen - Cyber Security Minor
+    </title>
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
+    <link rel="stylesheet" type="text/css" href="../document.css"/>
+    <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet" type="text/css"/>
+    <script src="https://kit.fontawesome.com/7e39a90b86.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header__inner">
+        <img class="header__logo" src="../assets/img/learningplan.jpg" alt="LearningPlan">
+        <h1 class="header__title">
+            R&D project
+        </h1>
+        <h2>
+            <a href="./overview">
+                <button class="button">
+                    Go back to Cyber Security Minor
+                </button>
+            </a>
+            <a href="../">
+                <button class="button">
+                    More about Michel
+                </button>
+            </a>
+        </h2>
+    </div>
+</header>
+<div class="under_header"></div>
+<p class="subtitle">
+    The description of the R&D project I've created
+</p>
+
+<div class="content">
+    <h1>
+        Project description
+    </h1>
+    <p>
+        I have implemented the application's core functionality. The users can register and log in with 2 factor
+        authentication (via an authenticator app). The authorization is handled via JWT tokens. These tokens are signed
+        with an RSA 2048 key which is randomly generated on startup by the authorization microservice. The user can also
+        register a team while creating his own account.
+    </p>
+    <p>
+        When logged in, the user can see all challenges and submit flags to those challenges. The solved challenges will
+        be shared between all users in the same team. The user can also visit the scoreboard page. There he'll find all
+        teams with their scores.
+    </p>
+    <p>
+        As an administrator, you'll also have access to the admin dashboard. In this dashboard you can see all users and
+        challenges. Here you can also create, update and delete challenges. You can also delete user and promote them to
+        administrator.
+    </p>
+    <p>
+        For the deployment, I've created a Ubuntu 20.04 server. On this server I've install Docker and Docker Swarm to
+        make sure that I can add extra scalability. Then I've built my images via Dockerhub, so I can easily fetch all
+        required images and with the Docker-Compose, the deployment is now solid and good working.
+    </p>
+    <p>
+        The full source code can be found on <a href="https://github.com/KekCTF" target="_blank">Github</a><i
+            class="fas fa-external-link-alt"></i>.
+    </p>
+
+    <h1>
+        Architecture
+    </h1>
+    <p>
+        Since the DDOS is the biggest treat in my application, I've chosen for a microservices architecture.
+        Microservices are easily scalable. If I notice that there is too much load on one particular microservice, I'll
+        add an extra instance of the application in Docker Swarm.
+    </p>
+    <p>
+        So for this application, I've created six microservices:
+    </p>
+    <ul>
+        <li>Gateway</li>
+        <li>Eureka Discovery</li>
+        <li>Authorization</li>
+        <li>Challenges</li>
+        <li>User</li>
+        <li>Team</li>
+    </ul>
+    <p>
+        All microservices are communicating through the gateway. The gateway handles everything, like temporary lockouts
+        and load balancing. For authorization, the gateway sends an REST request to the authorization service to
+        validate the JWT token. The authorization service also handles registering and logging in.
+    </p>
+
+    <h1>
+        Authentication/Authorization
+    </h1>
+    <p>
+        This chapter can be split into four different categories: user creation, JWT tokens, 2fa and the gateway
+        authorization.
+    </p>
+    <h2>
+        User creation
+    </h2>
+    <p>
+        A user can be created by sending a POST request to /authorization-service/auth/signup with as parameters the
+        username, password and team. When the team isn't created yet, a new team is created. But when a team already is
+        created, the player will join the already existing team. Sending this request will already return a JWT token.
+        In the frontend, this isn't used due to lack of time. Another string that is returned is the secret key for the
+        two factor authentication. A QR code is generated containing the following URL so that a authenticator app like
+        Google Authenticator can save it easily: 'otpauth://totp/KekCTF:USERNAME?secret=TOKEN&issuer=KekCTF'.
+    </p>
+    <h2>
+        JWT tokens
+    </h2>
+    <p>
+        An JWT token has three fields of data, all encrypted with Base64: header, payload and verify signature. In the
+        header, you would normally put the algorithm, in this case RSA. For the payload, you'll get a 'sub' which is the
+        subject. In my application, I store the UserID there. Then you'll get an role which contains the role of
+        the user and lastly, you'll get 'exp' which stands for the expiration date of the token. For the verify
+        signature part, an encryption is used. I use RSA2048 as encryption and this key is randomly generated. This
+        means that if someone tries to change the payload, the signature wouldn't be valid anymore.
+    </p>
+    <img src="../assets/img/jwt.png" alt="JWT implementation">
+    <h2>
+        2fa
+    </h2>
+    <p>
+        To log in, you're required to have an authenticator app. There are three fields: username, password and
+        Authenticator code. When you log in, the code is validated with the secret key, as well as the hash is matched
+        with the password of the username. When everything is correct, you'll get a JWT token returned.
+    </p>
+    <img src="../assets/img/totp.png" alt="totp implementation">
+    <h2>
+        gateway authorization
+    </h2>
+    <p>
+        When a request enters the gateway, it has to go to a series of checks to validate if the requested URI requires
+        a certain kind of authorization. Then it sends a REST request to the authorization service. The authorization
+        service validates if the signature is correct and returns the userid and the role. Then the gateway knows that
+        the user is either authorized to use a URI or is not authorized to do the action he is requesting.
+    </p>
+    <img src="../assets/img/securityauthorization.png" alt="Security authorization implementation">
+</div>
+
+</body>
+</html>
