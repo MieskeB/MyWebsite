@@ -1,0 +1,109 @@
+<html>
+<head>
+    <title>
+        Michel Bijnen - Cyber Security Minor
+    </title>
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
+    <link rel="stylesheet" type="text/css" href="../document.css"/>
+    <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet" type="text/css"/>
+    <script src="https://kit.fontawesome.com/7e39a90b86.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header__inner">
+        <img class="header__logo" src="../assets/img/learningplan.jpg" alt="LearningPlan">
+        <h1 class="header__title">
+            HTB CTF
+        </h1>
+        <h2>
+            <a href="./overview">
+                <button class="button">
+                    Go back to Cyber Security Minor
+                </button>
+            </a>
+            <a href="../">
+                <button class="button">
+                    More about Michel
+                </button>
+            </a>
+        </h2>
+    </div>
+</header>
+<div class="under_header"></div>
+<p class="subtitle">
+    The writeup of a challenge I solved during the HackTheBox UNI CTF 2020
+</p>
+
+<div class="content">
+    <h1>
+        Introduction
+    </h1>
+    <p>
+        Ron (a teacher) came to us asking if we'd like to join the Fontys FHICT team in this HTB CTF. I always love to
+        play CTFs, so I told him I was in. Ron asked me to be the team leader, so I took this role upon me. While doing
+        the CTF, I managed to help several people with their challenges, and I also solved a challenge myself (Buggy
+        Time Machine) with some help of another team member. The writeup of this challenge is found in this document.
+    </p>
+
+    <h1>
+        Buggy Time Machine
+    </h1>
+    <p>
+        After having a look at the Python code they gave us, we found out that the next year is calculated with the
+        following formula:
+    </p>
+    <p>
+        Next year = (current year * m + c) mod n
+    </p>
+    <p>
+        We did not have the values m, c and n, so we had to find them on our own. The n should be the highest value
+        possible + 1, so we ran a script (in Java) that gets a lot of years and printed the highest value we found:
+    </p>
+    <img src="../assets/img/ctfbtm1.png" alt="find largest and smallest"/>
+    <p>
+        After running this for a while, we found that the highest value was almost the maximum integer. We assumed that
+        this would be the n value: 2147483647. Since we have current year and next year two times, we can calculate the
+        m and c. With the following script:
+    </p>
+    <img src="../assets/img/ctfbtm2.png" alt="find m and c"/>
+    <p>
+        We did the calculation with random values and tested it on another query. That way we found out that the m
+        should be 48271 and the c should be 0. This means that c can be removed from the query to make it a bit easier.
+    </p>
+    <p>
+        Now we can start with calculating the next year with the following script:
+    </p>
+    <img src="../assets/img/ctfbtm3.png" alt="calculate next year"/>
+    <p>
+        When typing the solution in the request ‘predict_year’ we get the number of hops returned (876578) and we now
+        know our formula is correct.
+    </p>
+    <p>
+        Since the TravelTo2020 function requires a seed and not a predicted year, we need to invert this formula. This
+        is very difficult since there is a modulo in this formula. After some thinking and calculating, we found the
+        following formula:
+    </p>
+    <p>
+        Current year = ((z * n + next year) / m) mod n  IF (z * n + next year) mod 48271 == 0
+    </p>
+    <p>
+        In this formula, z is a value that needs to be filled in randomly. This translates into the following piece of
+        code:
+    </p>
+    <img src="../assets/img/ctfbtm4.png" alt="calculate previous year"/>
+    <p>
+        Now we need to use this formula to calculate 876578 hops back. Just place above function in a loop for the
+        required amount of hops:
+    </p>
+    <img src="../assets/img/ctfbtm5.png" alt="calculate previous year 876578 times"/>
+    <p>
+        This gives the correct seed. This needs to be returned to the API and then it returns the flag:
+    </p>
+    <p>
+        HTB{l1n34r_c0n9ru3nc35_4nd_prn91Zz}
+    </p>
+    <img src="../assets/img/ctfbtm6.png" alt="the final result"/>
+</div>
+
+</body>
+</html>
