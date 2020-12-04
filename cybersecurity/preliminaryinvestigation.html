@@ -128,10 +128,45 @@
         and high means it will most probably happen every CTF.
     </p>
     <p>
-        // TODO LEVEL SECURITY CONTROLS
+        The level security controls is defined as a combination of impact level and probability. This will tell how
+        important it is to look into this and make sure it doesn't happen. This will be defined in the following ways:
+        <br/>
+        &bull; Standard
+        <br/>
+        &bull; Moderate
+        <br/>
+        &bull; High
+        <br/>
+        &bull; Very high
+        <br/>
+        If the impact is low or negligible or if the probability is low, the level of security controls is standard. If
+        impact and probability is both medium, the level of security controls is moderate. If one of them is medium and
+        the other high, the level of security controls is high. In any other case, the level of security controls is
+        very high.
     </p>
     <p>
-        // TODO LEG ELK DING UIT INDIVIDUALLY
+        The CTF will only be hosted onsite for a few hours, so most 'normal' threats will not be a problem. I did choose
+        the following threats that could happen when keeping an on-site CTF:
+        <br/>
+        &bull; DDoS
+        <br/>
+        &bull; Stealing confidential business data
+        <br/>
+        &bull; Bruteforce flags
+    </p>
+    <p>
+        DDoS is most likely to happen, since a lot of people will join at once. This can be countered by using a proper
+        scaling method. Because the CTF is so short, if there is downtime, this wouldn't be a fun CTF.
+    </p>
+    <p>
+        Stealing confidential business data (like flags or challenge writeups) is very important not to happen. If this
+        happens, the CTF becomes unplayable and won't be fun for everyone. This can be solved by hashing the flags and
+        storing the writeups in a secure location.
+    </p>
+    <p>
+        Bruteforce flags is very important not to happen. To solve this, good ruling should be applied as well as
+        logging/monitoring if someone does this. Another solution is to increase the responsetime after every wrong
+        request.
     </p>
 
     <h1>
