@@ -1,0 +1,261 @@
+<html lang="en">
+<head>
+    <title>
+        Michel Bijnen - Cyber Security Minor
+    </title>
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
+    <link rel="stylesheet" type="text/css" href="../document.css"/>
+    <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet" type="text/css"/>
+    <script src="https://kit.fontawesome.com/7e39a90b86.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header__inner">
+        <img class="header__logo" src="../assets/img/learningplan.jpg" alt="LearningPlan">
+        <h1 class="header__title">
+            Security Principles
+        </h1>
+        <h2>
+            <a href="./overview">
+                <button class="button">
+                    Go back to Cyber Security Minor
+                </button>
+            </a>
+            <a href="../">
+                <button class="button">
+                    More about Michel
+                </button>
+            </a>
+        </h2>
+    </div>
+</header>
+<div class="under_header"></div>
+<p class="subtitle">
+    How I managed the standard OWASP security principles
+</p>
+<div class="content">
+
+    <h1>
+        Introduction
+    </h1>
+    <p>
+        The OWASP top 10 is a list of the 10 most found vulnerabilities. I am going to explain what every vulnerability
+        is and what some measures are to counter this vulnerability. After that, I say how I managed to secure this in
+        the R&D project.
+    </p>
+
+    <h1>
+        1. Injection
+    </h1>
+    <p>
+        The most common vulnerability is a way of injecting things. The most common is a form of SQL injection. Adding
+        ' OR '1'='1 to a injectable query, will always return true, because 1 is always equal to 1. Exploiting this
+        further, will result into records that can be changed or gotten.
+    </p>
+    <h2>
+        Counters
+    </h2>
+    <ul>
+        <li>Usage of prepared statements</li>
+        <li>Using a trusted, updated framework (ORM) will most of the time solve it</li>
+    </ul>
+    <h2>
+        R&D
+    </h2>
+    <p>
+        I used the ORM Spring Boot JPA. This is a widely used framework that handles everything in terms of database.
+        Since my API is built in Spring Boot Web, this is the best framework to use at this point.
+    </p>
+
+    <h1>
+        2. Broken Authentication
+    </h1>
+    <p>
+        Authentication that has a vulnerability in it. This can be caused by doing frontend validation, by not
+        sending/receiving the right information or by not validating every request for authentication tokens. Another
+        vulnerability in this section can be that the users are allowed to enter weak passwords.
+    </p>
+    <h2>
+        Counters
+    </h2>
+    <ul>
+        <li>Validating Authorization header as interceptor (default every request)</li>
+        <li>Usage of frameworks</li>
+        <li>Password policy (minimal 8 characters)</li>
+    </ul>
+    <h2>
+        R&D
+    </h2>
+    <p>
+        To solve this, I created an authentication microservice. This microservice handles both authentication as
+        authorization. More information about this subject can be found in <a href="randd">R&D project</a>.
+    </p>
+
+    <h1>
+        3. Sensitive data exposure
+    </h1>
+    <p>
+        Personal data can easily be shared. If the viewmodel give wrong or more information than necessary, it will most
+        likely be too much. This can always contain sensitive data.
+    </p>
+    <h2>
+        Counters
+    </h2>
+    <ul>
+        <li>Creating diagrams and maintaining a wiki on what data is sent back</li>
+        <li>Encrypt/hash sensitive data that cannot be shared in any way</li>
+        <li>Work testdriven; only add the functionality required to solve the tests</li>
+    </ul>
+    <h2>
+        R&D
+    </h2>
+    <p>
+        Sensitive data (like flags and passwords) are salted and hashed (<a href="randd">R&D project</a>). I never send
+        the whole object back, always create viewmodels with the data that is required by the frontend.
+    </p>
+
+    <h1>
+        4. XML External Entities (XXE)
+    </h1>
+    <p>
+        This vulnerability is based on older systems. External XML entities can be used to disclose internal files using
+        the file URI handler, internal file shares, internal port scanning, remote code execution, and denial of service
+        attacks.
+    </p>
+    <h2>
+        Counters
+    </h2>
+    <ul>
+        <li>Upgrade systems to latest version</li>
+    </ul>
+    <h2>
+        R&D
+    </h2>
+    <p>
+        All systems are upgraded to the latest versions.
+    </p>
+
+    <h1>
+        5. Broken access control
+    </h1>
+    <p>
+        Every time you access new resources or try to create new resources, your role needs to be validated if it has
+        sufficient rights to access the query. If this is not done properly or it is only done by the frontend, you can
+        get administrator rights as a normal user.
+    </p>
+    <h2>
+        Counters
+    </h2>
+    <ul>
+        <li>Using frameworks like JWT to validate that the roles are not changed</li>
+        <li>Using frameworks like Spring Security to validate that the role inside the token is correct</li>
+        <li>Defining every endpoint to need maximum privileges, unless told otherwise so the developer always need to
+            think about which roles are allowed to do the thing they intent to do
+        </li>
+    </ul>
+    <h2>
+        R&D
+    </h2>
+    <p>
+        For my authorization, I used JWT. This token is encrypted with RSA, so impossible to change the values
+        (<a href="randd">R&D project</a>).
+    </p>
+
+    <h1>
+        6. Security misconfiguration
+    </h1>
+    <p>
+        -
+    </p>
+    <h2>
+        Counters
+    </h2>
+    <ul>
+        <li></li>
+    </ul>
+    <h2>
+        R&D
+    </h2>
+    <p>
+        -
+    </p>
+
+    <h1>
+        7. Cross-Site Scripting XSS
+    </h1>
+    <p>
+        -
+    </p>
+    <h2>
+        Counters
+    </h2>
+    <ul>
+        <li></li>
+    </ul>
+    <h2>
+        R&D
+    </h2>
+    <p>
+        -
+    </p>
+
+    <h1>
+        8. Insecure Deserialization
+    </h1>
+    <p>
+        -
+    </p>
+    <h2>
+        Counters
+    </h2>
+    <ul>
+        <li></li>
+    </ul>
+    <h2>
+        R&D
+    </h2>
+    <p>
+        -
+    </p>
+
+    <h1>
+        9. Using Components with Known Vulnerabilities
+    </h1>
+    <p>
+        -
+    </p>
+    <h2>
+        Counters
+    </h2>
+    <ul>
+        <li></li>
+    </ul>
+    <h2>
+        R&D
+    </h2>
+    <p>
+        -
+    </p>
+
+    <h1>
+        10. Insufficient Logging & Monitoring
+    </h1>
+    <p>
+        -
+    </p>
+    <h2>
+        Counters
+    </h2>
+    <ul>
+        <li></li>
+    </ul>
+    <h2>
+        R&D
+    </h2>
+    <p>
+        -
+    </p>
+
+</div>
+</body>
+</html>
