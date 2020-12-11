@@ -110,8 +110,9 @@
         R&D
     </h2>
     <p>
-        Sensitive data (like flags and passwords) are salted and hashed (<a href="randd">R&D project</a>). I never send
-        the whole object back, always create viewmodels with the data that is required by the frontend.
+        Sensitive data (flags and passwords) are salted and hashed using BCrypt. BCrypt is currently the best choice for
+        hashing. I never send the whole object back, always create viewmodels with the data that is required by the
+        frontend.
     </p>
 
     <h1>
