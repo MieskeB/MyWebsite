@@ -138,6 +138,32 @@
         the user is either authorized to use a URI or is not authorized to do the action he is requesting.
     </p>
     <img src="../assets/img/securityauthorization.png" alt="Security authorization implementation">
+
+    <h1>
+        Recaptcha
+    </h1>
+    <p>
+        I've created another small project while doing this semester for my political party:
+        <a href="https://partijvoordememes.nl/" target="_blank">PartijVoorDeMemes</a>. In this project, I've added a
+        recaptcha implementation. Recaptcha stops bots from sending me (enormous amount of) emails.
+    </p>
+    <img src="../assets/img/recaptcha.png" alt="Recaptcha">
+    <p>
+        First off, I needed two tokens: a public (site) key and a private key. These could be generated on the Google
+        website. Then I needed to add a frontend request to Google to get a token. This request must contain the public
+        (site) key and the action (eg. contact, login, etc). When the token is gotten from Google, an request needs to
+        be made to the API. A header is added to this request with the name g-recaptcha-response.
+    </p>
+    <img src="../assets/img/recaptchafrontendrequest.png" alt="Recaptcha frontend request">
+    <p>
+        Next up, the backend needs to check if everything is correct. This is done via a request interceptor and a
+        library which validates the token with the private key.
+    </p>
+    <img src="../assets/img/recaptchabackendcheck.png" alt="Recaptcha backend check">
+    <p>
+        Google then can show their analytics
+    </p>
+    <img src="../assets/img/recaptchaanalytics.png" alt="Recaptcha analytics">
 </div>
 
 </body>
