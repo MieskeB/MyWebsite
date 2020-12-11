@@ -1,0 +1,422 @@
+<html lang="en">
+<head>
+    <title>
+        Michel Bijnen - Cyber Security Minor
+    </title>
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
+    <link rel="stylesheet" type="text/css" href="../document.css"/>
+    <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet" type="text/css"/>
+    <script src="https://kit.fontawesome.com/7e39a90b86.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header__inner">
+        <img class="header__logo" src="../assets/img/learningplan.jpg" alt="LearningPlan">
+        <h1 class="header__title">
+            Learning Activities
+        </h1>
+        <h2>
+            <a href="./overview">
+                <button class="button">
+                    Go back to Cyber Security Minor
+                </button>
+            </a>
+            <a href="../">
+                <button class="button">
+                    More about Michel
+                </button>
+            </a>
+        </h2>
+    </div>
+</header>
+<div class="under_header"></div>
+<p class="subtitle">
+    A concrete list of all goals I want to achieve this semester and the current status of it
+</p>
+
+<div class="content">
+    <h1>
+        Exercises
+    </h1>
+    <table>
+        <tr>
+            <td>
+                Description
+            </td>
+            <td>
+                Status
+            </td>
+            <td>
+                Location
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Find a couple of vacancies for security engineering jobs on application level and on
+                system/networking/cloud level. Analyze the required skills and described tasks and responsibilities.
+                Compare them with you learning plan and update you learning goals and activities, explain your findings
+                and updates in your portfolio.
+            </td>
+            <td>
+                NEW
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Implement the google authenticator two-factor authentication mechanism on application level (e.g. with
+                [3]), and on server level (e.g. with [4]).
+            </td>
+            <td>
+                CLOSED
+            </td>
+            <td>
+                <a href="randd">R&D project</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Make a misuse case (or abuse case) design for an IT system, service or application that you are
+                developing. See [5][6] as a starting point for study. Start with a global use case diagram of your IT
+                system (or application). Research and add the best counter measures on application, system ánd network
+                level to your design to prevent the misuse cases.
+            </td>
+            <td>
+                CLOSED
+            </td>
+            <td>
+                <a href="preliminaryinvestigation.html">Preliminary investigation</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Learn the standard security principles and write a blog on your portfolio with examples of these
+                security principles.
+            </td>
+            <td>
+                NEW
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Fix some security bugs in an application or system environment. (For example the results from the first
+                Red Team vs. Blue Team event). Report on the bugs and your fixes in your portfolio.
+            </td>
+            <td>
+                IN PROGRESS
+            </td>
+            <td>
+                <a href="redblue1">Red&Blue team event 1</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Learn the syntax and options of regular expressions and apply some regular expressions for input
+                filtering in a test application. Watch [9] as a starting point.
+            </td>
+            <td>
+                NEW
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Apply the CAPTCHA-mechanism in practice in an application. Explain the purpose and value of this. See
+                [10] as a starting point.
+            </td>
+            <td>
+                IN PROGRESS
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Look into database security and apply (for your favourite database system):
+                <br/>
+                - principle of least privilege: define accounts with limited permissions and use (only) these in
+                application code.
+                <br/>
+                - data encryption in the database.
+                <br/>
+                - backup and recovery.
+            </td>
+            <td>
+                IN PROGRESS
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Perform the AES encryption operations (See [6], SubBytes, ShiftRows, etc.) manually on one block of
+                128-bits data with a 128-bit (round) key. Start with the data block in a 16 byte state and apply the
+                four AES-operations on the state. Add a link to your portfolio page on cryptography to an appendix with
+                the calculations.
+            </td>
+            <td>
+                NEW
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Implement data encryption on application code level. Select a trusted cryptographic library for your
+                programming language, find/select a use case for data encryption and implement the data encryption with
+                the use of AES and the best fit block chaining method. Be aware of the difficulty of secure key handling
+                (you don't want to hard code keys in your code) and find a good way to solve this problem. Explain your
+                approach and the essential coding snippets and an example of execution of the code in your portfolio.
+            </td>
+            <td>
+                IN PROGRESS
+            </td>
+            <td>
+                <a href="randd">R&D project</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Learn the mathematical basics of RSA (and Diffie Hellman) public key cryptography : Modular arithmetic
+                ([5] par.1.4.1), the (extended) Euclidean algorithm (par.6.3.1, 6.3.2), Euler's phi-function (6.3.3),
+                Fermat's and Euler's theorem (6.3.4). Add a link to your portfolio page on cryptography to an appendix
+                with some relevant calculations. Some example exercises.
+            </td>
+            <td>
+                CLOSED
+            </td>
+            <td>
+                <a href="rsa">RSA</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Add security logging to your design, implementation and testing. Design: Add a list of security related
+                events, the logging technology, code example, log message format. Implementation: Add a standard logging
+                mechanism in your code, add the log events. Testing: test for the log events to be triggered, check if
+                the logging is done correctly.
+            </td>
+            <td>
+                IN PROGRESS
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Look for static code (security) analysis tools, select one for the programming language(s) your are
+                working with. Perform a static code analysis and (1) analyse, discuss your findings with a fellow
+                student and report on the findings, (2) design and implement improvements in your code. Examples of such
+                tools focussing on security: RATS (for C and Python code), Bandit (for Python code) and Safety (for used
+                Python libraries).
+            </td>
+            <td>
+                IN PROGRESS
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Review the source code of an open source tool, app, or application. Perform both a static code analysis
+                with tools, as well as a manual code review. Report on your findings to the developers of the open
+                source code and add your approach, review and findings to your portfolio.
+            </td>
+            <td>
+                NEW
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Review the secure configuration of a system environment (servers, clients, network). Report on your
+                findings to the developers of the environment and add your approach, review and findings to your
+                portfolio.
+            </td>
+            <td>
+                NEW
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Add fuzzing tests for an application that you are developing, for example in the form of unit tests.
+                Create fuzzing tests aimed at discovering buffer overflow issues and Denial of Service issues. If you
+                are developing a webapplication you could also add fuzzing tests for XSS and/or SQL injection (with a
+                list of XSS and/or SQLi testing vectors).
+            </td>
+            <td>
+                NEW
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+    </table>
+
+    <h1>
+        Challenges
+    </h1>
+    <table>
+        <tr>
+            <td>
+                Description
+            </td>
+            <td>
+                Status
+            </td>
+            <td>
+                Location
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Pick an IT application or service to develop to be able to learn and apply all security engineering
+                aspects. Pick an application that needs security and that could be an actual operational environment,
+                e.g. a CTF platform, an information system for a SOC, a web platform thats stores sensitive or
+                confidential data, etc. Give a general description of the application in your portfolio: main
+                functionality, users and user groups, global system architecture.
+                <br/>
+                Install one or more server in your personal seclab account for development and testing of this very
+                secure application. This server environment will be used for the Red Tem - Blue Team event where the
+                security of your application is tested (Red Team) and monitored (Blue Team).
+                <br/>
+                Note: You can also (partly) use the system environment and application for your project and use that for
+                the exercise/challenges that fit the project.
+            </td>
+            <td>
+                CLOSED
+            </td>
+            <td>
+                <a href="randd">R&D project</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Implement a new way of two-factor authentication, e.g. a password combined with passport NFC, or with
+                face recognition.
+            </td>
+            <td>
+                SKIPPED
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Apply all security by design steps and techniques in your R&D project:
+                <br/>
+                - gather and discuss security requirements
+                <br/>
+                - define security threats for the system to develop and perform a risk analysis.
+                <br/>
+                - put the threats in a secure design through misuse cases.
+                <br/>
+                - work out security controls to limit the threats in your misuse cases
+                <br/>
+                - implement the security controls
+                <br/>
+                - test the security controls by developing test cases for the threats. Add fuzzing tests.
+            </td>
+            <td>
+                IN PROGRESS
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Join the Red Team - Blue Team test event! Deploy your developed system (application(s), servers,
+                tooling,
+                network functionality) in an operational testing environment. Configure your system and application logs
+                to
+                be send to a central log server or SIEM server in the combined test environment. Ask the blue teaming
+                students how they can receive your logs (technology, portnumber, secure channel)
+            </td>
+            <td>
+                DONE
+            </td>
+            <td>
+                <a href="redblue1">Red&Blue event 1</a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Advise other developers (e.g. team members in your or another R&D project) how to apply security in
+                their developments.
+            </td>
+            <td>
+                IN PROGRESS
+            </td>
+            <td>
+                -
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Prepare towards the Red Team - Blue Team exercise (day/event) together with the Blue and Red Teaming
+                students. Set up your secure systems and applications in an operational test environment. Connect/send
+                your applications and systems security logs to the central logservers or SIEM servers from the Blue
+                Teaming students. Support the Blue Teaming students to be able to add security sensors to your
+                operational test network . Use the experience of the first event to improve your secure designs and
+                implementations.
+            </td>
+            <td>
+                DONE
+            </td>
+            <td>
+                <a href="redblue1">Red&Blue event 1</a>
+            </td>
+        </tr>
+    </table>
+
+    <h1>
+        Alternative options
+    </h1>
+    <table>
+        <tr>
+            <td>
+                Description
+            </td>
+            <td>
+                Status
+            </td>
+            <td>
+                Location
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Visit seminars or conferences related to security engineering, security by design, privacy by design,
+                etc.
+            </td>
+            <td>
+                DONE
+            </td>
+            <td>
+                <a href="htbctf">HTB CTF</a>
+            </td>
+        </tr>
+    </table>
+</div>
+
+</body>
+</html>
