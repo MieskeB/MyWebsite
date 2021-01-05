@@ -166,95 +166,122 @@
         6. Security misconfiguration
     </h1>
     <p>
-        -
+        Misconfiguring some aspects in a network can be a big problem. If the firewall is misconfigured and the wrong
+        ports are open, people can get access to the network from the outside. Other examples can be that the errors are
+        too verbose and display the whole stracktrace, which will result in extra information given away where
+        vulnerabilities can be found.
     </p>
     <h2>
         Counters
     </h2>
     <ul>
-        <li></li>
+        <li>Let a red team test your application</li>
+        <li>Document every choice you make while configuring your system</li>
     </ul>
     <h2>
         R&D
     </h2>
     <p>
-        -
+        I have made a mistake in the firewall in my R&D project: the red teamers had access to my portainer. So by
+        letting them test my application, I found this bug and I could easily solve it.
     </p>
 
     <h1>
         7. Cross-Site Scripting XSS
     </h1>
     <p>
-        -
+        XSS is adding a line of script to someone else's application to run these scripts on the victim's computer.
+        There are three types of XSS: stored, reflected and DOM. Stored XSS is that a line of script can be stored
+        inside the application database and is executed every time that it is requested. Reflected XSS is that someone
+        enters the XSS in the URL which can result into phishing attacks, since the URL is the URL of the requested
+        website. The third form of XSS is DOM. DOM based XSS is entering XSS in a search bar for example. This data will
+        never leave your browser and has the least risk of doing something wrong.
     </p>
     <h2>
         Counters
     </h2>
     <ul>
-        <li></li>
+        <li>Using trusted frameworks and keeping them up-to-date</li>
+        <li>Validating every input/output field</li>
     </ul>
     <h2>
         R&D
     </h2>
     <p>
-        -
+        For my application, I used a javascript framework: Angular. Angular automatically validates all input and XSS
+        will not be possible as long as I do not do something weird with the data. In the challenge page, a certain type
+        of formatting needs to be used. So I used a library to use markdown instead of HTML. This way XSS is also not
+        possible here.
     </p>
 
     <h1>
         8. Insecure Deserialization
     </h1>
     <p>
-        -
+        To change data in the request sent to the API, you can get remote code execution to change certain fields and
+        get you privileges you normally shouldn't get.
     </p>
     <h2>
         Counters
     </h2>
     <ul>
-        <li></li>
+        <li>Using frameworks that have solved this issue and not trying to do things yourself</li>
+        <li>Enforcing strict object policy</li>
     </ul>
     <h2>
         R&D
     </h2>
     <p>
-        -
+        I use Spring Boot, which automatically will solve this issue and thus will not be any problem for me.
     </p>
 
     <h1>
         9. Using Components with Known Vulnerabilities
     </h1>
     <p>
-        -
+        If a vulnerability is found in a framework you are using and you don't update your system with the latest patch,
+        you will get exploited.
     </p>
     <h2>
         Counters
     </h2>
     <ul>
-        <li></li>
+        <li>Constantly update your systems</li>
+        <li>Constant vulnerability watchers which will notify you when a vulnerability is found in a framework</li>
+        <li>Automatically updating your systems</li>
+        <li>Check if the frameworks that you are using are trusted</li>
+        <li>Don't use experimental versions</li>
     </ul>
     <h2>
         R&D
     </h2>
     <p>
-        -
+        I always use the latest versions of a library when creating my code.
     </p>
 
     <h1>
         10. Insufficient Logging & Monitoring
     </h1>
     <p>
-        -
+        When a vulnerability is found and there are people in your system, it is key that you throw them out of your
+        system as soon as possible. If you don't know that they are in your systems, you haven't logged enough.
+        Everything people do on your systems should be logged so you can always see what's going wrong. Also a blue team
+        should constantly monitor your application, so you can see what's going wrong.
     </p>
     <h2>
         Counters
     </h2>
     <ul>
-        <li></li>
+        <li>Log everything on every level</li>
+        <li>Have a blue team monitor your application</li>
     </ul>
     <h2>
         R&D
     </h2>
     <p>
-        -
+        For my application, I log most of my things. I've installed multiple tools to log on system level and send that
+        data to the blue team, but I've also logged most things on application level. This application level part I
+        monitored myself.
     </p>
 
 </div>
