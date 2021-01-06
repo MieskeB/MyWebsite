@@ -1,0 +1,193 @@
+<html lang="en">
+<head>
+    <title>
+        Michel Bijnen - Cyber Security Minor
+    </title>
+    <link rel="stylesheet" type="text/css" href="../style.css"/>
+    <link rel="stylesheet" type="text/css" href="../document.css"/>
+    <link href="https://fonts.googleapis.com/css?family=K2D" rel="stylesheet" type="text/css"/>
+    <script src="https://kit.fontawesome.com/7e39a90b86.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="header">
+    <div class="header__inner">
+        <img class="header__logo" src="../assets/img/learningplan.jpg" alt="LearningPlan">
+        <h1 class="header__title">
+            AES
+        </h1>
+        <h2>
+            <a href="./overview">
+                <button class="button">
+                    Go back to Cyber Security Minor
+                </button>
+            </a>
+            <a href="../">
+                <button class="button">
+                    More about Michel
+                </button>
+            </a>
+        </h2>
+    </div>
+</header>
+<div class="under_header"></div>
+<p class="subtitle">
+    Calculating AES by hand
+</p>
+
+<div class="content">
+    <h1>
+        Blocks
+    </h1>
+    <p>
+        For this AES encryption I am going to encrypt the following plaintext (p) sentence: "THIS IS A COOL MESSAGE". I
+        am going to use the key (k): "ABCDEFGHIJKLMNOP" (which has a length of 16 characters).
+    </p>
+    <p>
+        In AES, everything is divided in blocks of 128 bits (1 byte per square = 8 bits; a block is 4x4 so 16 squares;
+        16 * 8 = 128 bits). This means that the first part of the plaintext will look like as follows:
+    </p>
+    <table>
+        <tr>
+            <td>T</td>
+            <td></td>
+            <td>A</td>
+            <td>O</td>
+        </tr>
+        <tr>
+            <td>H</td>
+            <td>I</td>
+            <td></td>
+            <td>L</td>
+        </tr>
+        <tr>
+            <td>I</td>
+            <td>S</td>
+            <td>C</td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>S</td>
+            <td></td>
+            <td>O</td>
+            <td>M</td>
+        </tr>
+    </table>
+    <p>
+        The key will look as follows:
+    </p>
+    <table>
+        <tr>
+            <td>A</td>
+            <td>E</td>
+            <td>I</td>
+            <td>M</td>
+        </tr>
+        <tr>
+            <td>B</td>
+            <td>F</td>
+            <td>J</td>
+            <td>N</td>
+        </tr>
+        <tr>
+            <td>C</td>
+            <td>G</td>
+            <td>K</td>
+            <td>O</td>
+        </tr>
+        <tr>
+            <td>D</td>
+            <td>H</td>
+            <td>L</td>
+            <td>P</td>
+        </tr>
+    </table>
+    <p>
+        Next up, we need to convert both blocks to hexadecimals. First the plaintext:
+        <br/>
+        54 20 41 4f
+        <br/>
+        48 49 20 4c
+        <br/>
+        49 53 43 20
+        <br/>
+        53 20 4f 4d
+    </p>
+    <p>
+        Then the key converted to hexadecimals:
+        <br/>
+        41 45 49 4d
+        <br/>
+        42 46 4a 4e
+        <br/>
+        43 47 4b 4f
+        <br/>
+        44 48 4c 50
+    </p>
+    <h1>
+        Adding the keys (xor)
+    </h1>
+    <p>
+        The first step is adding the keys to the plaintext. This is done with a binary xor. So first 54 (1010100) ^ 41
+        (1000001) means that 1 and 1 becomes 0, 1 and 0 becomes 1, 0 and 0 becomes 0. So this number will be 15
+        (0010101). Doing this with the whole block, will result in the following block.
+        <br/>
+        15 65 08 02
+        <br/>
+        0a 0f 6a 02
+        <br/>
+        0a 14 08 6f
+        <br/>
+        17 68 03 1d
+    </p>
+    <h1>
+        Substitution
+    </h1>
+    <p>
+        Next up, substitution is required. This can be done via a very hard equation, but doing it by hand there is a
+        simple translation chart:
+    </p>
+    <img src="../assets/img/sbox.png" alt="S-box"/>
+    <p>
+        So converting this, will result into the following data:
+        <br/>
+        2f bc bf 6a
+        <br/>
+        47 fb 58 6a
+        <br/>
+        47 16 ff 06
+        <br/>
+        87 ea bb de
+    </p>
+    <h1>
+        Shift
+    </h1>
+    <p>
+        The next thing that needs to be done is shifting the rows. The 1st row won't shift, the 2nd row will shift 1 to
+        the left, the 3rd row 2 and the 4th row 3. This will give the following data:
+        <br/>
+        2f bc bf 6a
+        <br/>
+        fb 58 6a 47
+        <br/>
+        ff 06 47 16
+        <br/>
+        de 87 ea bb
+    </p>
+    <h1>
+        Mix
+    </h1>
+    <p>
+        This step is very difficult to do by hand and thus I will skip it. But in a nutshell what I think this step is:
+        Every square is bitshifted x times to the left.
+    </p>
+    <h1>
+        Repeat
+    </h1>
+    <p>
+        After having done everything, this process is repeated from the xor part. It is repeated ten times for an 128
+        bit key. After that, the string is encrypted via AES.
+    </p>
+</div>
+
+</body>
+</html>

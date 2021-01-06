@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 	<url>
-		<loc>https://www.michelbijnen.nl/</loc>
+		<loc>https://michelbijnen.nl/</loc>
 		<lastmod>2020-09-15</lastmod>
 		<changefreq>monthly</changefreq>
 		<priority>1.0</priority>
 	</url>
 	<url>
-		<loc>https://www.michelbijnen.nl/cybersecurity/overview</loc>
+		<loc>https://michelbijnen.nl/cybersecurity/overview</loc>
 		<lastmod>2020-11-03</lastmod>
 		<changefreq>weekly</changefreq>
 		<priority>0.7</priority>
 	</url>
 	<url>
-		<loc>https://www.michelbijnen.nl/cybersecurity/learningplan</loc>
+		<loc>https://michelbijnen.nl/cybersecurity/learningplan</loc>
 	</url>
 	<url>
-		<loc>https://www.michelbijnen.nl/cybersecurity/researchapproach</loc>
+		<loc>https://michelbijnen.nl/cybersecurity/researchapproach</loc>
 	</url>
 	<url>
-		<loc>https://www.michelbijnen.nl/cybersecurity/preliminaryinvestigation</loc>
+		<loc>https://michelbijnen.nl/cybersecurity/preliminaryinvestigation</loc>
 	</url>
 	<url>
-		<loc>https://www.michelbijnen.nl/cybersecurity/redblue1</loc>
+		<loc>https://michelbijnen.nl/cybersecurity/redblue1</loc>
 	</url>
 	<url>
-		<loc>https://www.michelbijnen.nl/cybersecurity/randd</loc>
+		<loc>https://michelbijnen.nl/cybersecurity/randd</loc>
 	</url>
 	<url>
-		<loc>https://www.michelbijnen.nl/cybersecurity/htbctf</loc>
+		<loc>https://michelbijnen.nl/cybersecurity/htbctf</loc>
 	</url>
 	<url>
-		<loc>https://www.michelbijnen.nl/cybersecurity/learningactivities</loc>
+		<loc>https://michelbijnen.nl/cybersecurity/learningactivities</loc>
 	</url>
 	<url>
-		<loc>https://www.michelbijnen.nl/cybersecurity/securityprinciples</loc>
+		<loc>https://michelbijnen.nl/cybersecurity/securityprinciples</loc>
+	</url>
+	<url>
+		<loc>https://michelbijnen.nl/cybersecurity/aes</loc>
 	</url>
 </urlset>
