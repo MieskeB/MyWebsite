@@ -35,7 +35,48 @@
 </p>
 
 <div class="content">
+    <h1>
+        CORS
+    </h1>
+    <p>
+        A classmate had a problem with sending requests from his Angular frontend to his Spring Boot API. Since I have a
+        lot of experience in this combination of frontend and backend, he asked me what was wrong. After having a look
+        to the application code, I found out that his CORS configuration was absent. Having worked with Spring Boot, I
+        had a solution ready in one of my older repositories and sent it to him, which solved the problem.
+    </p>
+    <p>
+        A few weeks later, another classmate asked me a similar question. This time he had a valid CORS configuration.
+        After a lot of debugging and sending the request, I found out that the API didn't accept the extra header that
+        was added to the request. Then the solution was easy: adding exposedHeader to the CORS configuration file.
+    </p>
 
+    <h1>
+        Setting up Docker Swarm
+    </h1>
+    <p>
+        A classmate told me that he had problems setting up Kubernetes. So I told him that I don't have experience with
+        Kubernetes, but I did have an easy solution: use Docker Swarm. I did warn him that Docker Swarm stated that you
+        should not use it in production mode. But due to lack of time, he decided he wanted to install it anyway.
+    </p>
+    <p>
+        I helped him with the installation of Docker Swarm. I also helped him with explaining how docker-compose worked
+        and sent him my docker-compose file. He modified my docker-compose file and uploaded it to his own server. From
+        this point everything was working properly.
+    </p>
+
+    <h1>
+        Reflection
+    </h1>
+    <p>
+        I love to share my own knowledge. Everything I know, I want to help people with. But when I can't solve a
+        problem, I sometimes tend to say that I just don't know it. Afterwards I help them Google some, but I tend to
+        give up sometimes on it. This is something that needs working on in upcoming years.
+    </p>
+
+    <h1>
+        Peer review
+    </h1>
+    <a href="../assets/downloads/PeerReview.pdf" target="_blank"><i class="far fa-file"></i> PeerReview.pdf</a>
 </div>
 
 </body>
