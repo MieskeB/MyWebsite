@@ -594,6 +594,13 @@ input {
     animation: fadein .5s, fadeout .5s 6.5s
 }
 
+.section_header {
+    padding: 10px 2%;
+    color: grey;
+    font-size: 30px;
+    text-align: left;
+}
+
 @-webkit-keyframes fadein {
     from {
         bottom: 0;
